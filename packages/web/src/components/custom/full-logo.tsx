@@ -1,14 +1,11 @@
 import { t } from 'i18next';
-
 import { flagsHooks } from '@/hooks/flags-hooks';
-
 const FullLogo = () => {
   const branding = flagsHooks.useWebsiteBranding();
-
   return (
-    <div className="h-[60px]">
+    <div className="flex justify-center">
       <img
-        className="h-full"
+        className="h-[48px] w-auto"
         src={branding.logos.fullLogoUrl}
         alt={t('logo')}
       />
