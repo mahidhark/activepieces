@@ -40,7 +40,7 @@ const ConnectSecretManagerDialog = ({
           <DialogTitle className="flex items-center gap-2">
             {t('Connect')}
             <a
-              href={`https://activepieces.com/docs/admin-guide/guides/secret-managers/${manager.id}`}
+              href={`https://pip0.ai/docs/admin-guide/guides/secret-managers/${manager.id}`}
               target="_blank"
               className="text-primary underline"
               rel="noreferrer"

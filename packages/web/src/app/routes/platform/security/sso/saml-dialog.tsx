@@ -119,7 +119,7 @@ export const ConfigureSamlDialog = ({
               markdown={t(
                 `
 **Setup Instructions**:
-Please check the following documentation: [SAML SSO](https://activepieces.com/docs/security/sso)
+Please check the following documentation: [SAML SSO](https://pip0.ai/docs/security/sso)
 
 **Single sign-on URL**:
 \`\`\`text

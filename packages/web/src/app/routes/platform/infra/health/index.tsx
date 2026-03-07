@@ -88,7 +88,7 @@ export default function SettingsHealthPage() {
         </span>
       ),
       loading: isPending,
-      link: 'https://www.activepieces.com/docs/install/configuration/hardware#technical-specifications',
+      link: 'https://pip0.ai/docs/install/configuration/hardware#technical-specifications',
     },
     {
       id: 'ram',
@@ -106,7 +106,7 @@ export default function SettingsHealthPage() {
               )}
         </span>
       ),
-      link: 'https://www.activepieces.com/docs/install/configuration/hardware#technical-specifications',
+      link: 'https://pip0.ai/docs/install/configuration/hardware#technical-specifications',
       loading: isPending,
     },
     {
@@ -125,7 +125,7 @@ export default function SettingsHealthPage() {
               )}
         </span>
       ),
-      link: 'https://www.activepieces.com/docs/install/configuration/hardware#technical-specifications',
+      link: 'https://pip0.ai/docs/install/configuration/hardware#technical-specifications',
       loading: isPending,
     },
   ];

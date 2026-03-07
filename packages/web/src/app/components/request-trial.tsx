@@ -60,7 +60,7 @@ export const RequestTrial = ({
 
   const handleClick = () =>
     window.open(
-      `https://www.activepieces.com/sales?${createQueryParams()}`,
+      `https://pip0.ai/sales
       '_blank',
       'noopener noreferrer',
     );

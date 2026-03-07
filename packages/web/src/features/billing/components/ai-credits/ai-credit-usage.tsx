@@ -40,7 +40,7 @@ export function AICreditUsage({ platformSubscription }: AiCreditUsageProps) {
   const planIncludedCredits = plan.includedAiCredits;
   const totalCreditsUsed = usage.totalAiCreditsUsed;
   const creditsRemaining = usage.aiCreditsRemaining;
-  const isCloud = window.location.hostname.includes('cloud.activepieces.com');
+  const isCloud = window.location.hostname.includes('pip0.ai');
   const autoTopUpState =
     plan.aiCreditsAutoTopUpState ?? AiCreditsAutoTopUpState.DISABLED;
 

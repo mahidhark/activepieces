@@ -84,7 +84,7 @@ const SigningKeysPage = () => {
                 rel="noopener noreferrer"
                 target="_blank"
                 className="font-medium text-primary underline underline-offset-4"
-                to="https://www.activepieces.com/docs/embedding/provision-users"
+                to="https://pip0.ai/docs/embedding/provision-users"
               >
                 JavaScript SDK
               </Link>{' '}
