@@ -3,7 +3,7 @@ import { flagsHooks } from '@/hooks/flags-hooks';
 const FullLogo = () => {
   const branding = flagsHooks.useWebsiteBranding();
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center items-center py-4 bg-transparent">
       <img
         className="h-[48px] w-auto"
         src={branding.logos.fullLogoUrl}
