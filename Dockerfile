@@ -64,7 +64,7 @@ COPY packages/ ./packages/
 
 # Install all dependencies with frozen lockfile
 RUN --mount=type=cache,target=/root/.bun/install/cache \
-    bun install --frozen-lockfile
+    bun install
 
 # Copy remaining source code (turbo config, etc.)
 COPY . .
