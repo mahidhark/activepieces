@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: 'Image tag (e.g. latest, v1.0.0)'
+        description: 'Image tag (e.g. v0.2.1)'
         required: true
-        default: 'latest'
+        default: 'v0.2.1'
 
 jobs:
   build:
@@ -36,8 +36,6 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64
           push: true
-          tags: |
-            ghcr.io/whatsscale/pip0:${{ github.event.inputs.tag }}
-            ghcr.io/whatsscale/pip0:latest
+          tags: ghcr.io/whatsscale/pip0:${{ github.event.inputs.tag }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
