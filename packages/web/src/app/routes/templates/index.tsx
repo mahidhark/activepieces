@@ -25,11 +25,9 @@ const TemplatesPage = () => {
   const navigate = useNavigate();
   const { data: templateCategories } = templatesHooks.useTemplateCategories();
   const { platform } = platformHooks.useCurrentPlatform();
-  const isShowingOfficialTemplates = !platform.plan.manageTemplatesEnabled;
+  const isShowingOfficialTemplates = false;
   const { templates, isLoading, search, setSearch, category, setCategory } =
-    templatesHooks.useTemplates(
-      isShowingOfficialTemplates ? TemplateType.OFFICIAL : TemplateType.CUSTOM,
-    );
+    templatesHooks.useTemplates(TemplateType.CUSTOM);
   const selectedCategory = category as string;
   const { data: allOfficialTemplates, isLoading: isAllTemplatesLoading } =
     templatesHooks.useAllOfficialTemplates();
@@ -78,16 +76,22 @@ const TemplatesPage = () => {
 
   const selectedCategoryTemplates = useMemo(() => {
     if (selectedCategory === 'All') {
-      return templates || [];
+      return [...(templates || []), ...(allOfficialTemplates || [])];
     }
-    return templatesByCategory[selectedCategory] || [];
-  }, [selectedCategory, templates, templatesByCategory]);
+    const customFiltered = (templates || []).filter(
+      (v) => v.categories && v.categories.includes(selectedCategory),
+    );
+    const officialFiltered = (allOfficialTemplates || []).filter(
+      (v) => v.categories && v.categories.includes(selectedCategory),
+    );
+    return [...customFiltered, ...officialFiltered];
+  }, [selectedCategory, templates, allOfficialTemplates]);
 
   const showLoading =
     isLoading || (isShowingOfficialTemplates && isAllTemplatesLoading);
   const showAllCategories =
     isShowingOfficialTemplates && selectedCategory === 'All';
-  const hasTemplates = templates && templates.length > 0;
+  const hasTemplates = selectedCategoryTemplates && selectedCategoryTemplates.length > 0;
   const showCategoryTitleForOfficialTemplates =
     isShowingOfficialTemplates && selectedCategory !== 'All';
 
@@ -117,7 +121,7 @@ const TemplatesPage = () => {
               </Button>
             </div>
           </div>
-          {isShowingOfficialTemplates && categories && (
+          {categories && (
             <CategoryFilterCarousel
               categories={categories}
               selectedCategory={selectedCategory}

@@ -105,7 +105,7 @@ const AuthFormTemplate = React.memo(
     return (
       <>
         {isCloud && (
-          <Link to="https://pip0.ai" target="_blank" rel="noreferrer">
+          <Link to="https://pip0.ai" target="_blank" rel="noreferrer" style={{background: "none"}}>
             <FullLogo />
           </Link>
         )}

@@ -43,7 +43,9 @@ export const communityTemplates = {
         return categories
     },
     list: async (request: ListTemplatesRequestQuery): Promise<SeekPage<Template>> => {
-        const queryString = convertToQueryString(request)
+        // Strip pieces from query — URL too long with 56+ pieces, filter client-side instead
+        const { pieces: _pieces, ...queryWithoutPieces } = request
+        const queryString = convertToQueryString(queryWithoutPieces)
         const url = `${TEMPLATES_SOURCE_URL}?${queryString}`
         const response = await fetch(url, {
             method: 'GET',
