@@ -316,7 +316,7 @@ const SignUpForm = ({
                     ></Checkbox>
                   </FormControl>
                   <Label htmlFor="newsLetter">
-                    {t(`Receive updates and newsletters from activepieces`)}
+                    {t(`Receive updates and newsletters from pip0`)}
                   </Label>
                   <FormMessage />
                 </FormItem>

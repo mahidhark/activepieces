@@ -118,7 +118,7 @@ export const LanguageToggle = () => {
             target="_blank"
             to="https://pip0.ai/docs/about/i18n"
           >
-            {t('Help translate Activepieces →')}
+            {t('Help translate pip0 →')}
           </Link>
         </div>
       )}
