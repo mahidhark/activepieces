@@ -1,4 +1,4 @@
-import { ApEdition, FilteredPieceBehavior, isNil, PiecesFilterType, Platform } from '@activepieces/shared'
+import { FilteredPieceBehavior, isNil, PiecesFilterType, Platform } from '@activepieces/shared'
 import { system } from '../../../helper/system/system'
 import { PieceMetadataSchema } from '../../../pieces/metadata/piece-metadata-entity'
 import { platformService } from '../../../platform/platform.service'
@@ -6,10 +6,6 @@ import { projectLimitsService } from '../../projects/project-plan/project-plan.s
 
 export const enterpriseFilteringUtils = {
     async filter(params: FilterParams): Promise<PieceMetadataSchema[]> {
-        const edition = system.getEdition()
-        if (![ApEdition.ENTERPRISE, ApEdition.CLOUD].includes(edition)) {
-            return params.pieces
-        }
         const { platformId, includeHidden, pieces, projectId } = params
         if (isNil(platformId) || includeHidden) {
             return pieces
