@@ -99,9 +99,9 @@ export const STANDARD_CLOUD_PLAN: PlatformPlanWithOnlyLimits = {
 }
 
 export const OPEN_SOURCE_PLAN: PlatformPlanWithOnlyLimits = {
-    tablesEnabled: true,
-    embeddingEnabled: false,
-    globalConnectionsEnabled: false,
+    tablesEnabled: false,
+    embeddingEnabled: true,
+    globalConnectionsEnabled: true,
     customRolesEnabled: false,
     includedAiCredits: 0,
     environmentsEnabled: false,
@@ -115,7 +115,7 @@ export const OPEN_SOURCE_PLAN: PlatformPlanWithOnlyLimits = {
     teamProjectsLimit: TeamProjectsLimit.NONE,
     projectRolesEnabled: false,
     customDomainsEnabled: false,
-    apiKeysEnabled: false,
+    apiKeysEnabled: true,
     ssoEnabled: false,
     secretManagersEnabled: false,
     scimEnabled: false,
