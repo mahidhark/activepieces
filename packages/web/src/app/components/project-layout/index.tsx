@@ -92,7 +92,7 @@ export function ProjectDashboardLayout({
             )}
             <div className="px-4"> {children} </div>
           </div>
-          {isEmbedded && (
+          {isEmbedded && !location.pathname.includes('/templates') && (
             <div className="px-4 py-2 text-xs text-muted-foreground">
               Powered by pip0
             </div>
