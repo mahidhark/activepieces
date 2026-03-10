@@ -15,7 +15,7 @@ import { Button } from '@/components/ui/button';
 import { flowHooks } from '@/features/flows';
 import { templatesTelemetryApi, templatesHooks } from '@/features/templates';
 import { platformHooks } from '@/hooks/platform-hooks';
-import { useEmbedding } from '@/components/embed/embed-provider';
+import { useEmbedding } from '@/components/providers/embed-provider';
 
 import { AllCategoriesView } from './all-categories-view';
 import { CategoryFilterCarousel } from './category-filter-carousel';
