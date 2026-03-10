@@ -15,6 +15,7 @@ import { Button } from '@/components/ui/button';
 import { flowHooks } from '@/features/flows';
 import { templatesTelemetryApi, templatesHooks } from '@/features/templates';
 import { platformHooks } from '@/hooks/platform-hooks';
+import { useEmbedding } from '@/components/embed/embed-provider';
 
 import { AllCategoriesView } from './all-categories-view';
 import { CategoryFilterCarousel } from './category-filter-carousel';
@@ -25,6 +26,8 @@ const TemplatesPage = () => {
   const navigate = useNavigate();
   const { data: templateCategories } = templatesHooks.useTemplateCategories();
   const { platform } = platformHooks.useCurrentPlatform();
+  const { embedState } = useEmbedding();
+  const isEmbedded = embedState.isEmbedded;
   const isShowingOfficialTemplates = false;
   const { templates, isLoading, search, setSearch, category, setCategory } =
     templatesHooks.useTemplates(TemplateType.CUSTOM);
@@ -76,16 +79,18 @@ const TemplatesPage = () => {
 
   const selectedCategoryTemplates = useMemo(() => {
     if (selectedCategory === 'All') {
-      return [...(templates || []), ...(allOfficialTemplates || [])];
+      return [...(templates || []), ...(isEmbedded ? [] : (allOfficialTemplates || []))];
     }
     const customFiltered = (templates || []).filter(
       (v) => v.categories && v.categories.includes(selectedCategory),
     );
-    const officialFiltered = (allOfficialTemplates || []).filter(
-      (v) => v.categories && v.categories.includes(selectedCategory),
-    );
+    const officialFiltered = isEmbedded
+      ? []
+      : (allOfficialTemplates || []).filter(
+          (v) => v.categories && v.categories.includes(selectedCategory),
+        );
     return [...customFiltered, ...officialFiltered];
-  }, [selectedCategory, templates, allOfficialTemplates]);
+  }, [selectedCategory, templates, allOfficialTemplates, isEmbedded]);
 
   const showLoading =
     isLoading || (isShowingOfficialTemplates && isAllTemplatesLoading);
@@ -121,7 +126,7 @@ const TemplatesPage = () => {
               </Button>
             </div>
           </div>
-          {categories && (
+          {categories && !isEmbedded && (
             <CategoryFilterCarousel
               categories={categories}
               selectedCategory={selectedCategory}
